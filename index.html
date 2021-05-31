@@ -1,3 +1,30 @@
+<div class="modal fade" id="gotModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="house_name"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2">Words:</div>
+                    <div class="col-10" id="house_words">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-2">Titles:</div>
+                    <div class="col-10" id="house_titles">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +64,6 @@
                     }
                 },'json');
             })
-
         });
     </script>
     <style>
@@ -47,25 +73,30 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="container">"
         <h1 class="text-center">GOT</h1>
+        <div class="row text-center"><h5>Click the images below to know your house</h5></div>  
         <hr>
         <div class="row text-center">    
             <div class="col">
-                <img class="house" src="img/stark.jpg" id="362" alt="Starks">
+                <img class="house rounded" src="img/stark.jpg" id="362" alt="Starks" data-bs-toggle="modal" data-bs-target="#gotModal">
             </div>
             <div class="col">
-                <img class="house" src="img/targaryen.jpg" id="378" alt="Targaryens">
+                <img class="house rounded" src="img/targaryen.jpg" id="378" alt="Targaryens" data-bs-toggle="modal" data-bs-target="#gotModal">
             </div>
             <div class="col">
-                <img class="house" src="img/lannister.jpg" id="229" alt="Lannisters">
+                <img class="house rounded" src="img/lannister.jpg" id="229" alt="Lannisters" data-bs-toggle="modal" data-bs-target="#gotModal">
             </div>
             <div class="col">
-                <img class="house" src="img/baratheon.png" id="17" alt="Baratheons">
+                <img class="house rounded" src="img/baratheon.png" id="17" alt="Baratheons" data-bs-toggle="modal" data-bs-target="#gotModal">
             </div> 
         </div>
         <hr>
+        
+        <!--
         <div class="row">
             <div class="col-2"></div>
             <div class="col border border-5 border-secondary">
@@ -93,6 +124,7 @@
             </div>
             <div class="col-2"></div>
         </div>
+        -->
     </div>
 </body>
 </html>
