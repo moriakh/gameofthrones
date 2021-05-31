@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Game of Thrones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    /*Baratheon: 17
+    Lannister: 229
+    Stark: 362
+    Targaryen: 378*/
+        $(document).ready(function(){
+            $('.house').on('click', function(){
+                let houseid = $(this).attr('id');
+                $.get('https://anapioficeandfire.com/api/houses/'+houseid+'', function(data){
+                    $('#house_name').html(
+                        `
+                        ${data.name}
+                        `
+                        );
+                    $('#house_words').html(
+                        `
+                        ${data.words}
+                        `
+                        );
+                        $('#house_titles').html("");
+                    for (i=0;i<data.titles.length;i++){
+                        $('#house_titles').append(
+                        `
+                        ${data.titles[i]}.
+                        `
+                        );
+                    }
+                },'json');
+            })
+
+        });
+    </script>
+    <style>
+        .house {
+            height: 10.65rem;
+            width: 15.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">"
+        <h1 class="text-center">GOT</h1>
+        <hr>
+        <div class="row text-center">    
+            <div class="col">
+                <img class="house" src="img/stark.jpg" id="362" alt="Starks">
+            </div>
+            <div class="col">
+                <img class="house" src="img/targaryen.jpg" id="378" alt="Targaryens">
+            </div>
+            <div class="col">
+                <img class="house" src="img/lannister.jpg" id="229" alt="Lannisters">
+            </div>
+            <div class="col">
+                <img class="house" src="img/baratheon.png" id="17" alt="Baratheons">
+            </div> 
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col border border-5 border-secondary">
+                <h2>House details</h2>
+                <div class="row">
+                    <div class="col-2">
+                        Name:
+                    </div>
+                    <div class="col-6" id="house_name"></div>
+                    <div class="col-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        Words:
+                    </div>
+                    <div class="col-6" id="house_words"></div>
+                    <div class="col-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        Titles:
+                    </div>
+                    <div class="col" id="house_titles"></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</body>
+</html>
